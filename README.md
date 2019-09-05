@@ -19,4 +19,4 @@ This repo consists of a collection of shell scripts which should help to automat
 2. Make Scripts executable using `chmod +x *.sh`
 3. Change the file "variables.sh" for your needs.
 4. Run `source variables.sh` to get the common variables defined
-5. Run `sudo -E ./writeImage.sh`
+5. Run `sudo -E ./writeImage.sh` to burn the image. This may take a while.
