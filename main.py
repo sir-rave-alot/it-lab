@@ -53,17 +53,26 @@ def parse():
   with open(_SRC_FILE, "r+") as json_file:
       rpi = json.load(json_file)
 
+  global _id
+  global _hostname
+  global _type
+  global _ip_eth
+  global _nm_eth
+  global _ns_eth
+  global _gw_eth
+  global _wifi_ssid
+  global _wifi_pw
+
   _id = rpi["device"]["id"]
   _hostname =  rpi["device"]["hostname"]
   _type =  rpi["device"]["type"]
-
   _ip_eth = rpi["device"]["interfaces"]["eth0"]["ip"]
   _nm_eth = rpi["device"]["interfaces"]["eth0"]["nm"]
   _ns_eth = rpi["device"]["interfaces"]["eth0"]["ns"]
   _gw_eth = rpi["device"]["interfaces"]["eth0"]["gw"]
-
   _wifi_ssid = rpi["device"]["interfaces"]["wlan0"]["ssid"]
   _wifi_pw = rpi["device"]["interfaces"]["wlan0"]["pw"]
+  
   print "Done"
 ########################################
 def printDetails():
