@@ -10,14 +10,14 @@
 export VERBOSE=0
 
 # YOUR SD-CARD - Find with "lsblk"
-export DISK_PATH="/dev/mmcblk0"
+export DISK_ABS_PATH="/dev/mmcblk0"
 
 ###########################
 ## DEFINE FILE STRUCTURE ##
 ###########################
 
 # PROJECT ROOT - change to absolute path if needed
-export PRJ_PATH="./"
+export PRJ_PATH="."
 
 # IMAGE DIRECTORY AND FILE
 export IMG_DIR="img"
@@ -33,7 +33,7 @@ export OBJ_DIR="output"
 ######################################
 ## INTERNAL VARIABLES DO NOT CHANGE ##
 ######################################
-export _IMG_PATH=${IMG_DIR}/${IMG_FILE}
+export _IMG_PATH=${PRJ_PATH}/${IMG_DIR}/${IMG_FILE}
 
 
 export _ERR_OK=0
