@@ -5,6 +5,11 @@ Raphael Andonie, HSLU 2019 (See License)
 ## Description
 This repo consists of a collection of shell scripts which should help to automate tedious tasks concerning the setup of a large number of Raspberry Pi.
 
+### Functions (in progress)
+1. Create bootable devie (Micro SD card)
+2. Automatically get MAC-Adress of the RPi
+3. Put files into the root file system of the RPi
+
 ## Dependencies
 - bash
 - sed
