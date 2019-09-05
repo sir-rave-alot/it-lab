@@ -1,0 +1,23 @@
+{
+	"device":{
+		"id":"20",
+		"hostname":"eee-1",
+		"type":"RPI3B",
+		"interfaces":{
+			"wlan0":{
+				"mac":"11",
+				"ip":"44",
+				"sn":"66",
+				"ssid":"anySSID",
+				"pw":"anyPW"	
+			},
+			"eth0":{
+				"mac":"",
+				"ip":"192.168.0.11",
+				"nm":"24",
+				"ns":"8.8.8.8",
+				"gw":""	
+			}
+		}
+	}
+}

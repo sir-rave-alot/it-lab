@@ -43,5 +43,5 @@ cp ${PRJ_PATH}/${OBJ_DIR}/"dhcpcd.conf" ${_RFS_MNT_DIR}/"etc/dhcpcd.conf"
 # cp ${PRJ_PATH}/${OBJ_DIR}/".bashrc" ${_BOOT_MNT_DIR}/"home"/${STUD_USR}/".bashrc"
 
 # INIT SCRIPT
-cp ${PRJ_PATH}/${OBJ_DIR}/"setupRPI.sh" ${_RFS_MNT_DIR}/"home"/${_DEFAULT_USER}
+cp ${PRJ_PATH}/${OBJ_DIR}/"template-setupRPI.sh" ${_RFS_MNT_DIR}/"home"/${_DEFAULT_USER}
 
