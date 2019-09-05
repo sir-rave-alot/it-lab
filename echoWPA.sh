@@ -6,19 +6,18 @@
 # RAPHAEL ANDONIE, HSLU 2019
 
 ################################################################################
-VERBOSE=0
-
-OBJ_DIR="output"
-TEMPLATE_DIR="templates"
-TEMPLATE_PREFIX="template-"
 FILENAME="wpa_supplicant.conf"
 
-declare -a KEYS=("<_THE_HOSTNAME>" "<_THE_NW_PASSWORD>")
-declare -a VALUES=("pi" "leTm3pass")
+declare -a KEYS=("<_THE_SSID>" "<_THE_HOSTNAME>" "<_THE_NW_PASSWORD>")
+declare -a VALUES=("anySSID" "anyPi" "anyPass")
 ################################################################################
-
-_ERR_OK=0
-_ERR_FAIL=1
+# SIMPLE CHECK IF VARIABLE.SH HAS BEEN RUN IN THIS SHELL
+if [ -z "${_VAR_IS_RUN}" ];
+then
+    echo 'Please define Variables.'
+    echo 'This is normally done by running variables.sh'
+    exit ${_ERR_FAIL}
+fi
 
 # CHECK IF NOF KEYS AND VALUES MATCH
 _NOF_KEYS=${#KEYS[@]}
