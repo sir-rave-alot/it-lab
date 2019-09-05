@@ -6,6 +6,12 @@
 
 ################################################################################
 
+# Check access rights
+if [[ $EUID -ne 0 ]]; then
+   echo "Please run as root." 
+   exit ${_ERR_FAIL}
+fi
+
 # DEFAULT BLOCK SIZE
 _BS='4M'
 
