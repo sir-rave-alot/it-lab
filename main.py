@@ -4,6 +4,7 @@ import json
 import sys
 from subprocess import Popen
 from subprocess import call
+from subprocess import PIPE
 import os
 ########################################
 
@@ -40,16 +41,19 @@ def printInputHint():
 ########################################
 def burnimage():
   print _MSG_NOT_IN_PYTHON
-  Process=Popen('./writeImage.sh', env=my_env)
+  Popen('./writeImage.sh', env=my_env)
 ########################################
 def makeWorkingCopy():
   print _MSG_NOT_IN_PYTHON
-  #Process=Popen('./createWokringCopy.sh', '-f', 'wpa_supplicant.conf', env=my_env)
-  #call(['./createWokringCopy','-f','wpa_supplicant.conf'])
   Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
 ########################################
 def cleanAll():
-  print ""
+  print _MSG_NOT_IN_PYTHON
+  p = Popen('./cleanall.sh', stdin=PIPE, env=my_env)
+  aw = raw_input()
+  p.communicate(aw)
+  #out, err = p.communicate(aw)
+  #print 'From subprocess: ' + out
 ########################################
 def printHelp():
   print _PRINT_FRM
@@ -136,3 +140,7 @@ while True:
   if(usr_in == "copy"):
     makeWorkingCopy()
     
+
+
+  if(usr_in == "clean"):
+    cleanAll()

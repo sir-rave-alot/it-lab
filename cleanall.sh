@@ -23,15 +23,16 @@ fi
 echo '  ---------------  '
 echo '~      CLEAN      ~'
 echo '  ---------------  '
-  echo -e "\033[31;1mDefinitively Remove: ${OBJ_DIR}\033[0m"
+echo -e "\033[31;1mDefinitively Remove: ${_OBJ_DIR}\033[0m"
 echo ""
+echo "Are you sure? [y,N] " 
 read -p "Are you sure? [y,N] " -n 1 -r
 echo ' '
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
     # DANGEROUS STUFF
     echo 'Proceed...'
-    rm -r ${OBJ_DIR}
+    rm -r ${_OBJ_DIR}
 else
   echo 'Aborted.'
   exit ${_ERR_FAIL}
