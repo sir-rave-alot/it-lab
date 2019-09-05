@@ -16,3 +16,5 @@ This repo consists of a collection of shell scripts which should help to automat
 
 ## Tutorial
 1. Clone the repo using git`clone <url>`
+2. Change the file "variables.sh" for your needs.
+3. Run `source variables.sh` to get the common variables defined
