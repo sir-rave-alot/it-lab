@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+export RUN_FROM_PY=1
+./main.py

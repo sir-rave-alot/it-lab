@@ -32,6 +32,7 @@ _wifi_pw =""
 my_env = os.environ.copy()
 my_env["PATH"] = "/usr/sbin:/sbin:" + my_env["PATH"]
 
+os.environ["RUN_FROM_PY"] = "1"
 
 print "Raspberry Pi Setup"
 ########################################
