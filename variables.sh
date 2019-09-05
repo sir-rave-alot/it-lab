@@ -21,7 +21,7 @@ export STUD_USR="stud"
 ###########################
 
 # PROJECT ROOT - change to absolute path if needed
-export PRJ_PATH="."
+export PRJ_PATH="/home/rave/projects/it-lab"
 
 # IMAGE DIRECTORY AND FILE
 export IMG_DIR="img"

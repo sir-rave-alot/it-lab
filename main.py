@@ -1,9 +1,10 @@
 #!/usr/bin/env python
-# IMAGE FILE PARSER
 
 import json
-#from collections import OrderedDict
 import sys
+from subprocess import Popen
+from subprocess import call
+import os
 ########################################
 
 SRC_PATH = "."
@@ -13,7 +14,7 @@ SRC_FILE = "devices.json"
 
 _SRC_FILE = SRC_PATH + "/" + SRC_FILE
 _PRINT_FRM="~~~~~~~~~~~~~~~~~~~~~~~~~"
-
+_MSG_NOT_IN_PYTHON = "YOU ARE ENTERING ANOTHER SHELL!"
 
 _id =""
 _hostname =""
@@ -27,11 +28,28 @@ _gw_eth =""
 _wifi_ssid =""
 _wifi_pw =""
 
+my_env = os.environ.copy()
+my_env["PATH"] = "/usr/sbin:/sbin:" + my_env["PATH"]
+
+
 print "Raspberry Pi Setup"
 ########################################
 def printInputHint():
   print ""
   print ">"
+########################################
+def burnimage():
+  print _MSG_NOT_IN_PYTHON
+  Process=Popen('./writeImage.sh', env=my_env)
+########################################
+def makeWorkingCopy():
+  print _MSG_NOT_IN_PYTHON
+  #Process=Popen('./createWokringCopy.sh', '-f', 'wpa_supplicant.conf', env=my_env)
+  #call(['./createWokringCopy','-f','wpa_supplicant.conf'])
+  Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
+########################################
+def cleanAll():
+  print ""
 ########################################
 def printHelp():
   print _PRINT_FRM
@@ -40,11 +58,13 @@ def printHelp():
 
   print "help    : print this HELP page"
   print "exit    : exit program"
+  print "clean   : clean all temporary files"
   print "var     : define shell variables"
   print "detail  : print details of Raspberry Pi"
   print "list    : list disks"
   print "parse   : parse 'devices.json'"
   print "burn    : burn image"
+  print "copy    : create config files out of templates"
   print "config  : write Configurations"
   print _PRINT_FRM
 ########################################
@@ -72,7 +92,7 @@ def parse():
   _gw_eth = rpi["device"]["interfaces"]["eth0"]["gw"]
   _wifi_ssid = rpi["device"]["interfaces"]["wlan0"]["ssid"]
   _wifi_pw = rpi["device"]["interfaces"]["wlan0"]["pw"]
-  
+
   print "Done"
 ########################################
 def printDetails():
@@ -110,5 +130,9 @@ while True:
   if(usr_in == "detail"):
     printDetails()
 
-
-
+  if(usr_in == "burn"):
+    burnimage()
+    
+  if(usr_in == "copy"):
+    makeWorkingCopy()
+    

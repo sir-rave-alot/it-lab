@@ -40,6 +40,7 @@ _CPY_W=${PRJ_PATH}/${OBJ_DIR}/${FILENAME}
 
 cp ${_CPY_SRC} ${_CPY_W}
 
+echo "Template ${_CPY_SRC} copied to ${_CPY_W}"
 exit ${_ERR_OK}
 
 
