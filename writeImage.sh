@@ -14,7 +14,7 @@ read -p "Are you sure? [y,N] " -n 1 -r
 echo ' '
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    # do dangerous stuff
+    # DANGEROUS STUFF
     echo 'Proceed...'
     umount ${DISK_ABS_PATH}?*
     #dd bs=${_BS} if=${_IMG_PATH} of=${DISK_ABS_PATH} status=progress conv=fsync

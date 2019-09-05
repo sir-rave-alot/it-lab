@@ -34,7 +34,7 @@ export OBJ_DIR="output"
 ## INTERNAL VARIABLES DO NOT CHANGE ##
 ######################################
 export _IMG_PATH=${PRJ_PATH}/${IMG_DIR}/${IMG_FILE}
-
+export _KEYS_SUFFIX=".keys"
 
 export _ERR_OK=0
 export _ERR_FAIL=1
