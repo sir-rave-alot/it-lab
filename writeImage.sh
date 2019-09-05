@@ -1,7 +1,23 @@
+#!/usr/bin/env bash
+#
+# CREATE BOOTABLE DEVICE
+#
+# RAPHAEL ANDONIE, HSLU 2019
 
-# BLOCK SIZE
+################################################################################
+
+# DEFAULT BLOCK SIZE
 _BS='4M'
 
+# Parse for input parameters
+while getopts 'v:i:b:' flag; do
+  case "${flag}" in
+	v) DISK_ABS_PATH=${OPTARG} ;;
+	i) _IMG_PATH=${OPTARG} ;;
+	b) _BS=${OPTARG} ;;
+	*)  ;;
+  esac
+done
 
 echo '  ---------------  '
 echo '~ SETUP RASPBERRY ~'
@@ -17,7 +33,7 @@ then
     # DANGEROUS STUFF
     echo 'Proceed...'
     umount ${DISK_ABS_PATH}?*
-    #dd bs=${_BS} if=${_IMG_PATH} of=${DISK_ABS_PATH} status=progress conv=fsync
+    dd bs=${_BS} if=${_IMG_PATH} of=${DISK_ABS_PATH} status=progress conv=fsync
 else
 	echo 'Aborted.'
 	exit ${_ERR_FAIL}
