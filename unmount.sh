@@ -30,6 +30,10 @@ do
   echo -e "\033[31;1munmount: ${_MNT_PTS[$i]}\033[0m"
 done
 echo ""
+if [ ! -z "$RUN_FROM_PY" ];
+then
+  echo "Are you sure? [y,N] " 
+fi
 read -p "Are you sure? [y,N] " -n 1 -r
 echo ' '
 if [[ $REPLY =~ ^[Yy]$ ]]

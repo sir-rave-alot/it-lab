@@ -40,6 +40,11 @@ echo -e "\033[31;1mUSB-DEVICE: ${DISK_ABS_PATH}\033[0m"
 echo 'IMAGE: '${_IMG_PATH}
 echo 'BLOCK SIZE: '${_BS}
 echo ""
+
+if [ ! -z "$RUN_FROM_PY" ];
+then
+  echo "Are you sure? [y,N] " 
+fi
 read -p "Are you sure? [y,N] " -n 1 -r
 echo ' '
 if [[ $REPLY =~ ^[Yy]$ ]]

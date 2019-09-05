@@ -32,9 +32,10 @@ fi
 
 for (( i=0; i<${_NOF_PART}; i++ ));
 do
-  #echo ${_PARTITIONS[$i]} "will be mounted at" ${_MNT_PTS[$i]}
+  echo ${_PARTITIONS[$i]} "will be mounted at" ${_MNT_PTS[$i]}
   mkdir -p ${_MNT_PTS[$i]}
   mount ${_PARTITIONS[$i]} ${_MNT_PTS[$i]}
 done
 
+echo "Done."
 exit ${_ERR_OK}

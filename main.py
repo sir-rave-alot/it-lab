@@ -42,7 +42,9 @@ def printInputHint():
 ########################################
 def burnimage():
   print _MSG_NOT_IN_PYTHON
-  Popen('./writeImage.sh', env=my_env)
+  p = Popen('./writeImage.sh', stdin=PIPE, env=my_env)
+  aw = raw_input()
+  p.communicate(aw)
 ########################################
 def makeWorkingCopy():
   print _MSG_NOT_IN_PYTHON
@@ -55,6 +57,18 @@ def cleanAll():
   p.communicate(aw)
   #out, err = p.communicate(aw)
   #print 'From subprocess: ' + out
+ ########################################
+def unmount():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen('./unmount.sh', stdin=PIPE, env=my_env)
+  aw = raw_input()
+  p.communicate(aw)
+########################################
+def remount():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen('./remount.sh', stdin=PIPE, env=my_env)
+  aw = raw_input()
+  p.communicate(aw)
 ########################################
 def printHelp():
   print _PRINT_FRM
@@ -71,6 +85,8 @@ def printHelp():
   print "burn    : burn image"
   print "copy    : create config files out of templates"
   print "config  : write Configurations"
+  print "eject   : unmount filesystem"
+  print "remount : remount partitions"
   print _PRINT_FRM
 ########################################
 def parse():
@@ -141,7 +157,12 @@ while True:
   if(usr_in == "copy"):
     makeWorkingCopy()
     
-
+  if(usr_in == "eject"):
+    unmount()
+  
+  if(usr_in == "remount"):
+    remount()
+  
 
   if(usr_in == "clean"):
     cleanAll()
