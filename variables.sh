@@ -27,7 +27,12 @@ export IMG_FILE="2018-11-13-raspbian-stretch-lite.img"
 export TEMPLATE_DIR="templates"
 export TEMPLATE_PREFIX="template-"
 
+# OUTPUT FOR GENERATED TEMPORARY FILES
 export OBJ_DIR="output"
+
+# MOUNTPOINTS FOR RPI-LINUX
+export BOOT_MNT_DIR="boot"
+export RFS_MNT_DIR="rootfs"
 
 ################################################################################
 ######################################
@@ -35,6 +40,9 @@ export OBJ_DIR="output"
 ######################################
 export _IMG_PATH=${PRJ_PATH}/${IMG_DIR}/${IMG_FILE}
 export _KEYS_SUFFIX=".keys"
+
+export _BOOT_MNT_DIR=${PRJ_PATH}/${BOOT_MNT_DIR}
+export _RFS_MNT_DIR=${PRJ_PATH}/${RFS_MNT_DIR}
 
 export _ERR_OK=0
 export _ERR_FAIL=1

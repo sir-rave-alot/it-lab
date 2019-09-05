@@ -2,3 +2,6 @@
 templates/
 output/
 img/
+
+rootfs/
+boot/
