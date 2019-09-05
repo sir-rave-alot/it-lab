@@ -2,7 +2,7 @@
 Raphael Andonie, HSLU 2019 (See License)
 <raphael.andonie@hslu.ch>
 
-# Disclaimer
+## Disclaimer
 NO WARRANTY. THE USER IS RESPONSIBLE FOR ANY DAMAGE.
 
 This project is far from perfect. It has been created for a very specifc use and has been "haereklepft", as one says in bernese German.
