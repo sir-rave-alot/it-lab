@@ -22,6 +22,8 @@ fi
 
 
 # HOSTNAME
+cp ${PRJ_PATH}/${OBJ_DIR}/"hostname" ${_RFS_MNT_DIR}/"hostname"
+cp ${PRJ_PATH}/${OBJ_DIR}/"hosts" ${_RFS_MNT_DIR}/"hosts"
 
 
 # SSH SERVER ENABLE
