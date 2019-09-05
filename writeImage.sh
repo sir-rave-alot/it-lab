@@ -20,5 +20,7 @@ then
     #dd bs=${_BS} if=${_IMG_PATH} of=${DISK_ABS_PATH} status=progress conv=fsync
 else
 	echo 'Aborted.'
-	${_EXIT_ERR}
+	exit ${_ERR_FAIL}
 fi
+
+exit ${_ERR_OK}
