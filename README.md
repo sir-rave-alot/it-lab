@@ -4,6 +4,7 @@ Raphael Andonie, HSLU 2019 (See License)
 
 ## Description
 This repo consists of a collection of shell scripts which should help to automate tedious tasks concerning the setup of a large number of Raspberry Pi.
+There is a Python frontend for better usage. Nevertheless this script is just calling the *.sh scripts, so it is also possible to do all with plain shell and without a python install.
 
 ### Functions (in progress)
 1. Create bootable devie (Micro SD card)
