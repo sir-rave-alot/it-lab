@@ -12,6 +12,14 @@ if [[ $EUID -ne 0 ]]; then
    exit ${_ERR_FAIL}
 fi
 
+# SIMPLE CHECK IF VARIABLE.SH HAS BEEN RUN IN THIS SHELL
+if [ -z "${_VAR_IS_RUN}" ];
+then
+    echo 'Please define Variables.'
+    echo 'This is normally done by running variables.sh'
+    exit ${_ERR_FAIL}
+fi
+
 # DEFAULT BLOCK SIZE
 _BS='4M'
 

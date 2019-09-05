@@ -17,6 +17,14 @@ while getopts 'f:k:v:' flag; do
   esac
 done
 
+# SIMPLE CHECK IF VARIABLE.SH HAS BEEN RUN IN THIS SHELL
+if [ -z "${_VAR_IS_RUN}" ];
+then
+    echo 'Please define Variables.'
+    echo 'This is normally done by running variables.sh'
+    exit ${_ERR_FAIL}
+fi
+
 # NO ARGUMENTS PASSED ?
 if [ $# -eq 0 ]
 then

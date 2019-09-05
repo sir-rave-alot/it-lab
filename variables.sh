@@ -12,6 +12,10 @@ export VERBOSE=0
 # YOUR SD-CARD - Find with "lsblk"
 export DISK_ABS_PATH="/dev/mmcblk0"
 
+# USER NAMES (OLY ADMIN WILL BE IN SUDOERS)
+export ADMIN_USR="admin"
+export STUD_USR="stud"
+
 ###########################
 ## DEFINE FILE STRUCTURE ##
 ###########################
@@ -43,6 +47,11 @@ export _KEYS_SUFFIX=".keys"
 
 export _BOOT_MNT_DIR=${PRJ_PATH}/${BOOT_MNT_DIR}
 export _RFS_MNT_DIR=${PRJ_PATH}/${RFS_MNT_DIR}
+
+export _DEFAULT_USER="pi"
+export _DEFAULT_HOST="raspberrypi"
+export _DEFAULT_PW="raspberry"
+
 
 export _ERR_OK=0
 export _ERR_FAIL=1
