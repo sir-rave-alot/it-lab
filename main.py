@@ -15,7 +15,7 @@ SRC_FILE = "devices.json"
 
 _SRC_FILE = SRC_PATH + "/" + SRC_FILE
 _PRINT_FRM="~~~~~~~~~~~~~~~~~~~~~~~~~"
-_MSG_NOT_IN_PYTHON = "YOU ARE ENTERING ANOTHER SHELL!"
+_MSG_NOT_IN_PYTHON = "YOU ARE ENTERING BASH!"
 
 _id =""
 _hostname =""
@@ -35,6 +35,24 @@ my_env["PATH"] = "/usr/sbin:/sbin:" + my_env["PATH"]
 os.environ["RUN_FROM_PY"] = "1"
 
 print "Raspberry Pi Setup"
+
+########################################
+def makeWorkingCopy():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
+  err = p.communicate()
+########################################
+def fillTemplates():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_HOSTNAME>','-v', _hostname], env=my_env)
+  err = p.communicate()
+  p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_SSID>','-v', _wifi_ssid], env=my_env)
+  err = p.communicate()
+  p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_NW_PASSWORD>','-v', _wifi_pw], env=my_env)
+  err = p.communicate()
+########################################
+#
+#
 ########################################
 def printInputHint():
   print ""
@@ -45,10 +63,6 @@ def burnimage():
   p = Popen('./writeImage.sh', stdin=PIPE, env=my_env)
   aw = raw_input()
   p.communicate(aw)
-########################################
-def makeWorkingCopy():
-  print _MSG_NOT_IN_PYTHON
-  Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
 ########################################
 def cleanAll():
   print _MSG_NOT_IN_PYTHON
@@ -70,23 +84,34 @@ def remount():
   aw = raw_input()
   p.communicate(aw)
 ########################################
+def listLSBLK():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen('lsblk', stdin=PIPE, env=my_env)
+  p.communicate()
+########################################
 def printHelp():
   print _PRINT_FRM
   print "HELP PAGE"
   print _PRINT_FRM
 
+  print "AUXILIARY"
   print "help    : print this HELP page"
   print "exit    : exit program"
-  print "clean   : clean all temporary files"
-  print "var     : define shell variables"
+  print ""
+  print "PROCESS INFORMATION"
+  print "var     : print variables (coming soon)"
   print "detail  : print details of Raspberry Pi"
   print "list    : list disks"
-  print "parse   : parse 'devices.json'"
+  print ""
+  print "PROCESS TRUNK"
   print "burn    : burn image"
+  print "remount : remount partitions"
+  print "parse   : parse 'devices.json'"
   print "copy    : create config files out of templates"
   print "config  : write Configurations"
   print "eject   : unmount filesystem"
-  print "remount : remount partitions"
+  print "clean   : clean all temporary files"
+
   print _PRINT_FRM
 ########################################
 def parse():
@@ -156,13 +181,19 @@ while True:
     
   if(usr_in == "copy"):
     makeWorkingCopy()
+    fillTemplates()
     
   if(usr_in == "eject"):
     unmount()
   
   if(usr_in == "remount"):
     remount()
+
+  if(usr_in == "list"):
+    listLSBLK()
   
+
+
 
   if(usr_in == "clean"):
     cleanAll()
