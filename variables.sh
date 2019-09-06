@@ -46,6 +46,7 @@ export _IMG_PATH=${PRJ_PATH}/${IMG_DIR}/${IMG_FILE}
 export _KEYS_SUFFIX=".keys"
 
 export _OBJ_DIR=${PRJ_PATH}/${OBJ_DIR}
+export _TEMPLATE_DIR=${PRJ_PATH}/${TEMPLATE_DIR}
 
 export _BOOT_MNT_DIR=${PRJ_PATH}/${BOOT_MNT_DIR}
 export _RFS_MNT_DIR=${PRJ_PATH}/${RFS_MNT_DIR}
