@@ -23,11 +23,9 @@ _NOF_TPL=${#_TEMPLATES[@]}
 
 for (( i=0; i<${_NOF_TPL}; i++ ));
 do
-	echo "Copy " ${_TEMPLATES[$i]}
-	cp "${_TEMPLATE_DIR}/${_TEMPLATES[$i]}" ${_OBJ_DIR}/"${_TEMPLATES[$i]#TEMPLATE_PREFIX}"
-	#echo "${_TEMPLATE_DIR}/${_TEMPLATES[$i]}"
-	#cp ${_TEMPLATE_DIR}/${_TEMPLATES[$i]} ${PRJ_PATH}/${OBJ_DIR}/${FILENAME}
-
+	_CPY_SRC=${_TEMPLATE_DIR}/${_TEMPLATES[$i]}
+	_CPY_DEST=${_OBJ_DIR}/${_TEMPLATES[$i]#"$TEMPLATE_PREFIX"}
+	cp ${_CPY_SRC} ${_CPY_DEST}
 done
 
 exit 0

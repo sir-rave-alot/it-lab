@@ -39,7 +39,8 @@ print "Raspberry Pi Setup"
 ########################################
 def makeWorkingCopy():
   print _MSG_NOT_IN_PYTHON
-  p = Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
+  #p = Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
+  p = Popen(['./copyTemplates.sh'], env=my_env)
   err = p.communicate()
 ########################################
 def fillTemplates():
