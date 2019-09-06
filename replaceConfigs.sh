@@ -29,6 +29,7 @@ cp ${PRJ_PATH}/${OBJ_DIR}/"dhcpcd.conf" ${_RFS_MNT_DIR}/"etc/dhcpcd.conf"
 
 # SSH SERVER ENABLE
 touch ${_BOOT_MNT_DIR}"/ssh"
+chmod 777 ${_BOOT_MNT_DIR}"/ssh"
 
 # WIFI CONFIGURATION
 cp ${PRJ_PATH}/${OBJ_DIR}/"wpa_supplicant.conf" ${_BOOT_MNT_DIR}/"wpa_supplicant.conf"
