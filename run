@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
+chmod +x *.sh
+chmod +x *.py
+
 export RUN_FROM_PY=1
 ./main.py
