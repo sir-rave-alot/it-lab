@@ -54,6 +54,20 @@ def fillTemplates():
   	("<_THE_HOSTNAME>",_hostname),
   	("<_THE_NW_PASSWORD>",_wifi_pw)
   	})
+  #
+  vReplaceRegex(
+    "./output/hostname",{
+    ("<_THE_HOSTNAME>",_hostname)
+    })
+  #
+  vReplaceRegex(
+    "./output/dhcpcd.conf",{
+    ("<_THE_IP_ADDR>",_ip_eth),
+    ("<_THE_NET_MASK>",_nm_eth),
+    ("<_THE_DNS_SRV>",_ns_eth),
+    ("<_THE_ROUTER>",_gw_eth)
+    })
+  #
 ########################################
 #
 #
@@ -83,24 +97,9 @@ def vReplaceRegex(file, tuples):
           curr_line = temp_line
 
         fout.write(temp_line)
-      #print "ok"
-        #temp_line = line.replace(_iter_keys, _iter_vals)
-        #for pvt in tuples:
-        # print pvt[0], "replacing..."
-        # temp_line = line.replace(pvt[0],pvt[1])
-        #fout.write(temp_line)
-          #fout.write(line.replace(pvt[0],pvt[1]))
-  #
+      # end for line in fin
   os.rename(file_out, file)
-#
-#
-def lineRRegex(line, tuples):
-	ln = line
-	tpl = tuples
-	for pvt in tpl:
-		 ln.replace(pvt[0],pvt[1])
-
-	return ln
+  # end outfile
 ########################################
 #
 #
