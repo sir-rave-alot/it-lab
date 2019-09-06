@@ -89,6 +89,12 @@ def listLSBLK():
   p = Popen('lsblk', stdin=PIPE, env=my_env)
   p.communicate()
 ########################################
+def getDisk():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen('./unautomount.sh', stdin=PIPE, env=my_env)
+  aw = raw_input()
+  p.communicate(aw)
+########################################
 def printHelp():
   print _PRINT_FRM
   print "HELP PAGE"
@@ -104,6 +110,7 @@ def printHelp():
   print "list    : list disks"
   print ""
   print "PROCESS TRUNK"
+  print "get disk: unmount from auto mount done by os"
   print "burn    : burn image"
   print "remount : remount partitions"
   print "parse   : parse 'devices.json'"
@@ -175,6 +182,11 @@ while True:
 
   if(usr_in == "detail"):
     printDetails()
+
+    
+
+  if(usr_in == "get disk"):
+    getDisk()
 
   if(usr_in == "burn"):
     burnimage()
