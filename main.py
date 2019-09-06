@@ -35,25 +35,14 @@ my_env["PATH"] = "/usr/sbin:/sbin:" + my_env["PATH"]
 
 os.environ["RUN_FROM_PY"] = "1"
 
-print "Raspberry Pi Setup"
 
-########################################
-def makeWorkingCopy():
-  print _MSG_NOT_IN_PYTHON
-  #p = Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
-  p = Popen(['./copyTemplates.sh'], env=my_env)
-  err = p.communicate()
-########################################
 def fillTemplates():
-  #print _MSG_NOT_IN_PYTHON
-  #p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_HOSTNAME>','-v', _hostname], env=my_env)
-  #err = p.communicate()
   vReplaceRegex(
-  	"./output/wpa_supplicant.conf",{
-  	("<_THE_SSID>",_wifi_ssid),
-  	("<_THE_HOSTNAME>",_hostname),
-  	("<_THE_NW_PASSWORD>",_wifi_pw)
-  	})
+    "./output/wpa_supplicant.conf",{
+    ("<_THE_SSID>",_wifi_ssid),
+    ("<_THE_HOSTNAME>",_hostname),
+    ("<_THE_NW_PASSWORD>",_wifi_pw)
+    })
   #
   vReplaceRegex(
     "./output/hostname",{
@@ -68,9 +57,15 @@ def fillTemplates():
     ("<_THE_ROUTER>",_gw_eth)
     })
   #
+
+
+
 ########################################
-#
-#
+def makeWorkingCopy():
+  print _MSG_NOT_IN_PYTHON
+  #p = Popen(['./createWokringCopy.sh','-f','wpa_supplicant.conf'], env=my_env)
+  p = Popen(['./copyTemplates.sh'], env=my_env)
+  err = p.communicate()
 ########################################
 def printInputHint():
   print ""
@@ -211,31 +206,47 @@ def printDetails():
   print "password     : ", _wifi_pw
 ########################################
 
+print "~ Raspberry Pi Setup ~"
+print ""
+print "This user frontend is intended as a simple way to use the shell scripts."
+print "Anyway, the scripts can also be automated using bash only"
+print ""
+
 printHelp()
 
 while True:
   printInputHint()
   usr_in = raw_input()
 
+###
   if(usr_in == "help"):
     printHelp()
 
   if(usr_in == "exit"):
     sys.exit()
 
-  if(usr_in == "parse"):
-    parse()
-
+###
   if(usr_in == "detail"):
-    printDetails()
+    printDetails()  
 
-    
+  if(usr_in == "list"):
+    listLSBLK()
 
+###
   if(usr_in == "get disk"):
     getDisk()
 
   if(usr_in == "burn"):
     burnimage()
+
+  if(usr_in == "remount"):
+    remount()
+
+  if(usr_in == "parse"):
+    parse()
+
+  if(usr_in == "config"):
+    #config()
     
   if(usr_in == "copy"):
     makeWorkingCopy()
@@ -243,18 +254,6 @@ while True:
     
   if(usr_in == "eject"):
     unmount()
-  
-  if(usr_in == "remount"):
-    remount()
-
-  if(usr_in == "list"):
-    listLSBLK()
-  
-  if(usr_in == "rregex"):
-	#replaceRegex() "./output/wpa_supplicant.conf" "<_THE_HOSTNAME>", "lemon"
-	#vReplaceRegex("./output/wpa_supplicant.conf",{("<_THE_SSID>", "Orange"),("<_THE_HOSTNAME>", "lemon")})
-	fillTemplates()
-
 
   if(usr_in == "clean"):
     cleanAll()
