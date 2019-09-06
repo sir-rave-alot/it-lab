@@ -2,6 +2,7 @@
 
 import json
 import sys
+import itertools
 from subprocess import Popen
 from subprocess import call
 from subprocess import PIPE
@@ -44,13 +45,15 @@ def makeWorkingCopy():
   err = p.communicate()
 ########################################
 def fillTemplates():
-  print _MSG_NOT_IN_PYTHON
-  p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_HOSTNAME>','-v', _hostname], env=my_env)
-  err = p.communicate()
-  p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_SSID>','-v', _wifi_ssid], env=my_env)
-  err = p.communicate()
-  p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_NW_PASSWORD>','-v', _wifi_pw], env=my_env)
-  err = p.communicate()
+  #print _MSG_NOT_IN_PYTHON
+  #p = Popen(['./replaceRegex.sh','-f','wpa_supplicant.conf', '-k', '<_THE_HOSTNAME>','-v', _hostname], env=my_env)
+  #err = p.communicate()
+  vReplaceRegex(
+  	"./output/wpa_supplicant.conf",{
+  	("<_THE_SSID>",_wifi_ssid),
+  	("<_THE_HOSTNAME>",_hostname),
+  	("<_THE_NW_PASSWORD>",_wifi_pw)
+  	})
 ########################################
 #
 #
@@ -61,31 +64,44 @@ def printInputHint():
 #
 #
 def vReplaceRegex(file, tuples):
-	file_out = "tmp.txt"
+  file_out = "tmp.txt"
+  tuples_k = tuples
+  tuples_v = tuples
 
-	with open(file, "rt") as fin:
-		with open(file_out, "wt") as fout:
-			for pvt in tuples:
-				for line in fin:
-					fout.write(line.replace(pvt[0],pvt[1]))
-	#
-	os.rename(file_out, file)
+  with open(file, "rt") as fin:
+    with open(file_out, "wt") as fout:
+      for line in fin:
+        curr_line = line
+        _iter_keys = map(lambda k: k[0], tuples_k)
+        _iter_vals = map(lambda v: v[1], tuples_v)
 
-#	for pvt in tuples:
-#		print pvt
-#		print pvt[0] , "and",  pvt[1]
+        for _i in range(0, len(_iter_keys)):
+          _kk = _iter_keys[_i] 
+          _vv = _iter_vals[_i] 
+          print _kk , _vv
+          temp_line = curr_line.replace(_kk, _vv)
+          curr_line = temp_line
 
+        fout.write(temp_line)
+      #print "ok"
+        #temp_line = line.replace(_iter_keys, _iter_vals)
+        #for pvt in tuples:
+        # print pvt[0], "replacing..."
+        # temp_line = line.replace(pvt[0],pvt[1])
+        #fout.write(temp_line)
+          #fout.write(line.replace(pvt[0],pvt[1]))
+  #
+  os.rename(file_out, file)
+#
+#
+def lineRRegex(line, tuples):
+	ln = line
+	tpl = tuples
+	for pvt in tpl:
+		 ln.replace(pvt[0],pvt[1])
 
-def replaceRegex():
-	file_in = "./output/wpa_supplicant.conf"	
-	file_out = "tmp.txt"
-
-	with open(file_in, "rt") as fin:
-		with open(file_out, "wt") as fout:
-		    for line in fin:
-		        fout.write(line.replace("<_THE_SSID>", "Orange"))
-
-	os.rename(file_out, file_in)
+	return ln
+########################################
 #
 #
 ########################################
@@ -237,8 +253,8 @@ while True:
   
   if(usr_in == "rregex"):
 	#replaceRegex() "./output/wpa_supplicant.conf" "<_THE_HOSTNAME>", "lemon"
-	vReplaceRegex("./output/wpa_supplicant.conf",{("<_THE_SSID>", "Orange"),("<_THE_HOSTNAME>", "lemon")})
-
+	#vReplaceRegex("./output/wpa_supplicant.conf",{("<_THE_SSID>", "Orange"),("<_THE_HOSTNAME>", "lemon")})
+	fillTemplates()
 
 
   if(usr_in == "clean"):
