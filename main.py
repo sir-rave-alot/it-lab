@@ -58,6 +58,36 @@ def fillTemplates():
 def printInputHint():
   print ""
   print ">"
+#
+#
+def vReplaceRegex(file, tuples):
+	file_out = "tmp.txt"
+
+	with open(file, "rt") as fin:
+		with open(file_out, "wt") as fout:
+			for pvt in tuples:
+				for line in fin:
+					fout.write(line.replace(pvt[0],pvt[1]))
+	#
+	os.rename(file_out, file)
+
+#	for pvt in tuples:
+#		print pvt
+#		print pvt[0] , "and",  pvt[1]
+
+
+def replaceRegex():
+	file_in = "./output/wpa_supplicant.conf"	
+	file_out = "tmp.txt"
+
+	with open(file_in, "rt") as fin:
+		with open(file_out, "wt") as fout:
+		    for line in fin:
+		        fout.write(line.replace("<_THE_SSID>", "Orange"))
+
+	os.rename(file_out, file_in)
+#
+#
 ########################################
 def burnimage():
   print _MSG_NOT_IN_PYTHON
@@ -205,6 +235,9 @@ while True:
   if(usr_in == "list"):
     listLSBLK()
   
+  if(usr_in == "rregex"):
+	#replaceRegex() "./output/wpa_supplicant.conf" "<_THE_HOSTNAME>", "lemon"
+	vReplaceRegex("./output/wpa_supplicant.conf",{("<_THE_SSID>", "Orange"),("<_THE_HOSTNAME>", "lemon")})
 
 
 
