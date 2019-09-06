@@ -67,6 +67,11 @@ def makeWorkingCopy():
   p = Popen(['./copyTemplates.sh'], env=my_env)
   err = p.communicate()
 ########################################
+def config():
+  print _MSG_NOT_IN_PYTHON
+  p = Popen(['./replaceConfigs.sh'], env=my_env)
+  err = p.communicate()
+########################################    
 def printInputHint():
   print ""
   print ">"
@@ -244,14 +249,14 @@ while True:
 
   if(usr_in == "parse"):
     parse()
-
-  if(usr_in == "config"):
-    #config()
     
   if(usr_in == "copy"):
     makeWorkingCopy()
     fillTemplates()
     
+  if(usr_in == "config"):
+    config()
+
   if(usr_in == "eject"):
     unmount()
 
