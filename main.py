@@ -2,7 +2,6 @@
 
 import json
 import sys
-import itertools
 from subprocess import Popen
 from subprocess import call
 from subprocess import PIPE

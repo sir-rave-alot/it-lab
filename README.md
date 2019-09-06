@@ -17,13 +17,22 @@ There is a Python frontend for better usage. Nevertheless this script is just ca
 2. Automatically get MAC-Adress of the RPi
 3. Put files into the root file system of the RPi
 
-## Dependencies
+## Hard Dependencies
 - bash
 - sed
+- awk
+- grep
+
+## Soft Dependencies
+- python 2.7
+- libs: json, sys, subprocess, os
 
 ## Tutorial
 1. Clone the repo using `git clone <url>`
-2. Make Scripts executable using `chmod +x *.sh`
-3. Change the file "variables.sh" for your needs.
-4. Run `source variables.sh` to get the common variables defined
-5. Run `sudo -E ./run` to enter the interactive interface.
+2. Make Scripts executable using `chmod +x run`
+3. Create a folder for your image by using `mkdir -p img`
+4. Download the image of choice from the download server [Download Page](https://www.raspberrypi.org/downloads/)
+5. Extract it and put the *.img file in the "img" folder (`cp *.img img/`)
+6. Change the file "variables.sh" for your needs.
+7. Run `source variables.sh` to get the common variables defined
+8. Run `sudo -E ./run` to enter the interactive interface.
