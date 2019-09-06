@@ -21,8 +21,11 @@ then
 fi
 
 # HOSTNAME
-cp ${PRJ_PATH}/${OBJ_DIR}/"hostname" ${_RFS_MNT_DIR}/"hostname"
-cp ${PRJ_PATH}/${OBJ_DIR}/"hosts" ${_RFS_MNT_DIR}/"hosts"
+cp ${PRJ_PATH}/${OBJ_DIR}/"hostname" ${_RFS_MNT_DIR}/"etc"/"hostname"
+cp ${PRJ_PATH}/${OBJ_DIR}/"hosts" ${_RFS_MNT_DIR}/"etc"/"hosts"
+
+# STATIC IP ETH0
+cp ${PRJ_PATH}/${OBJ_DIR}/"dhcpcd.conf" ${_RFS_MNT_DIR}/"etc/dhcpcd.conf"
 
 # SSH SERVER ENABLE
 touch ${_BOOT_MNT_DIR}"/ssh"
@@ -30,8 +33,7 @@ touch ${_BOOT_MNT_DIR}"/ssh"
 # WIFI CONFIGURATION
 cp ${PRJ_PATH}/${OBJ_DIR}/"wpa_supplicant.conf" ${_BOOT_MNT_DIR}/"wpa_supplicant.conf"
 
-# STATIC IP ETH0
-cp ${PRJ_PATH}/${OBJ_DIR}/"dhcpcd.conf" ${_RFS_MNT_DIR}/"etc/dhcpcd.conf"
+
 
 # (SSH-KEY)
 
@@ -43,5 +45,5 @@ cp ${PRJ_PATH}/${OBJ_DIR}/"dhcpcd.conf" ${_RFS_MNT_DIR}/"etc/dhcpcd.conf"
 # cp ${PRJ_PATH}/${OBJ_DIR}/".bashrc" ${_BOOT_MNT_DIR}/"home"/${STUD_USR}/".bashrc"
 
 # INIT SCRIPT
-cp ${PRJ_PATH}/${OBJ_DIR}/"template-setupRPI.sh" ${_RFS_MNT_DIR}/"home"/${_DEFAULT_USER}
+cp ${PRJ_PATH}/${OBJ_DIR}/"setupRPI.sh" ${_RFS_MNT_DIR}/"home"/${_DEFAULT_USER}
 

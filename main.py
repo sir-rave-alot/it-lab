@@ -50,6 +50,11 @@ def fillTemplates():
     })
   #
   vReplaceRegex(
+  "./output/hosts",{
+  ("<_THE_HOSTNAME>",_hostname)
+  })
+  #
+  vReplaceRegex(
     "./output/dhcpcd.conf",{
     ("<_THE_IP_ADDR>",_ip_eth),
     ("<_THE_NET_MASK>",_nm_eth),
@@ -92,7 +97,6 @@ def vReplaceRegex(file, tuples):
         for _i in range(0, len(_iter_keys)):
           _kk = _iter_keys[_i] 
           _vv = _iter_vals[_i] 
-          print _kk , _vv
           temp_line = curr_line.replace(_kk, _vv)
           curr_line = temp_line
 
