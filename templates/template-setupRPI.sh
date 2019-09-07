@@ -34,8 +34,15 @@ adduser ${_NEW_USR} --gecos "${_NEW_USR_NAME},${_NEW_USR_ROOM},${_NEW_USR_TEL},$
 echo "${_NEW_USR}:${_NEW_USR_PW}" | sudo chpasswd
 
 # ALLOW REBOOT AND SHUTDOWN TO NORMAL USER
-echo "## Allow <_THE_USR> reboot and shutdown" >> "/etc/sudoers"
-echo "<_THE_USR> ALL=NOPASSWD: /sbin/reboot, /sbin/shutdown" >> "/etc/sudoers"
+#echo "## Allow <_THE_USR> reboot and shutdown" >> "/etc/sudoers"
+#echo "<_THE_USR> ALL=NOPASSWD: /sbin/reboot, /sbin/shutdown" >> "/etc/sudoers"
+echo "shutdown:x:510:<_THE_USR>" >> "/etc/group"
+chown root:shutdown /sbin/shutdown
+chown root:shutdown /sbin/reboot
+chmod 750 /sbin/shutdown
+chmod 750 /sbin/reboot
+chmod u+s /sbin/shutdown
+chmod u+s /sbin/reboot
 
 # DELETE DEFAULT USER (PI)
 killall -u ${_OLD_DEF_USR}
