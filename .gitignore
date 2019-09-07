@@ -1,4 +1,4 @@
-# IGNORE TEMPLATE DIRECTORY
+*.json
 output/
 img/
 

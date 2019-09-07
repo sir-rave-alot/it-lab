@@ -34,17 +34,6 @@ chmod 777 ${_BOOT_MNT_DIR}"/ssh"
 # WIFI CONFIGURATION
 cp ${PRJ_PATH}/${OBJ_DIR}/"wpa_supplicant.conf" ${_BOOT_MNT_DIR}/"wpa_supplicant.conf"
 
-
-
-# (SSH-KEY)
-
-# USER DIRECTORIES
-# mkdir -p ${_BOOT_MNT_DIR}/"home"/${ADMIN_USR}
-# mkdir -p ${_BOOT_MNT_DIR}/"home"/${STUD_USR}
-
-# .BASHRC
-# cp ${PRJ_PATH}/${OBJ_DIR}/".bashrc" ${_BOOT_MNT_DIR}/"home"/${STUD_USR}/".bashrc"
-
 # INIT SCRIPT
 cp ${PRJ_PATH}/${OBJ_DIR}/"setupRPI.sh" ${_RFS_MNT_DIR}/"home"/${_DEFAULT_USER}
 
