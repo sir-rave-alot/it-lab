@@ -35,5 +35,11 @@ chmod 777 ${_BOOT_MNT_DIR}"/ssh"
 cp ${PRJ_PATH}/${OBJ_DIR}/"wpa_supplicant.conf" ${_BOOT_MNT_DIR}/"wpa_supplicant.conf"
 
 # INIT SCRIPT
-cp ${PRJ_PATH}/${OBJ_DIR}/"setupRPI.sh" ${_RFS_MNT_DIR}/"home"/${_DEFAULT_USER}
+cp ${PRJ_PATH}/${OBJ_DIR}/"setupRPI.sh" ${_RFS_MNT_DIR}/"root"/"setupRPI.sh"
 
+# RC.LOCAL
+cp ${PRJ_PATH}/${OBJ_DIR}/"rc.local" ${_RFS_MNT_DIR}/"etc"/"rc.local"
+
+# WELCOME PRINT
+cp ${PRJ_PATH}/${OBJ_DIR}/"welcome.sh" ${_RFS_MNT_DIR}/"etc"/"welcome.sh"
+echo ${_RFS_MNT_DIR}"/etc/welcome.sh" >> ${_RFS_MNT_DIR}"/etc/skel/.bashrc"
