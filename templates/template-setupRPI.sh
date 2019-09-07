@@ -33,6 +33,10 @@ usermod -aG sudo ${_NEW_ADMIN}
 adduser ${_NEW_USR} --gecos "${_NEW_USR_NAME},${_NEW_USR_ROOM},${_NEW_USR_TEL},${_NEW_USR_TEL}" --disabled-password
 echo "${_NEW_USR}:${_NEW_USR_PW}" | sudo chpasswd
 
+# ALLOW REBOOT AND SHUTDOWN TO NORMAL USER
+echo "## Allow <_THE_USR> reboot and shutdown" >> "/etc/sudoers"
+echo "<_THE_USR> ALL=NOPASSWD: /sbin/reboot, /sbin/shutdown" >> "/etc/sudoers"
+
 # DELETE DEFAULT USER (PI)
 killall -u ${_OLD_DEF_USR}
 userdel -r ${_OLD_DEF_USR}
