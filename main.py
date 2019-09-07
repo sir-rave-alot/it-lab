@@ -29,6 +29,20 @@ _gw_eth =""
 _wifi_ssid =""
 _wifi_pw =""
 
+_admin=""
+_admin_pw=""
+_admin_name=""
+_admin_room=""
+_admin_tel=""
+
+_user=""
+_user_pw=""
+_user_name=""
+_user_room=""
+_user_tel=""
+
+_def_usr=""
+
 my_env = os.environ.copy()
 my_env["PATH"] = "/usr/sbin:/sbin:" + my_env["PATH"]
 
@@ -61,8 +75,28 @@ def fillTemplates():
     ("<_THE_ROUTER>",_gw_eth)
     })
   #
-
-
+  vReplaceRegex(
+    "./output/rc.local",{
+    ("<_THE_SETUPFILE>","/root/setupRPI.sh")
+    })
+  #
+  vReplaceRegex(
+    "./output/setupRPI.sh",{
+    ("<_THE_ADMIN>",_admin),
+    ("<_THE_ADMIN_PW>",_admin_pw),
+    ("<_THE_ADMIN_NAME>",_admin_name),
+    ("<_THE_ADMIN_ROOM>",_admin_room),
+    ("<_THE_ADMIN_TEL>",_admin_tel),
+    #
+    ("<_THE_USR>",_user),
+    ("<_THE_USR_PW>",_user_pw),
+    ("<_THE_USR_NAME>",_user_name),
+    ("<_THE_USR_ROOM>",_user_room),
+    ("<_THE_USR_TEL>",_user_tel),
+    #
+    ("<_THE_DEFAULT_USR>",_def_usr)
+    })
+  #
 
 ########################################
 def makeWorkingCopy():
@@ -184,6 +218,18 @@ def parse():
   global _gw_eth
   global _wifi_ssid
   global _wifi_pw
+  global _admin
+  global _admin_pw
+  global _admin_name
+  global _admin_room
+  global _admin_tel
+  global _user
+  global _user_pw
+  global _user_name
+  global _user_room
+  global _user_tel
+  global _def_usr
+
 
   _id = rpi["device"]["id"]
   _hostname =  rpi["device"]["hostname"]
@@ -194,7 +240,17 @@ def parse():
   _gw_eth = rpi["device"]["interfaces"]["eth0"]["gw"]
   _wifi_ssid = rpi["device"]["interfaces"]["wlan0"]["ssid"]
   _wifi_pw = rpi["device"]["interfaces"]["wlan0"]["pw"]
-
+  _admin = rpi["device"]["admin"]["name"]
+  _admin_pw = rpi["device"]["admin"]["pw"]
+  _admin_name = rpi["device"]["admin"]["fname"]
+  _admin_room = rpi["device"]["admin"]["room"]
+  _admin_tel = rpi["device"]["admin"]["tel"]
+  _user = rpi["device"]["user"]["name"]
+  _user_pw = rpi["device"]["user"]["pw"]
+  _user_name = rpi["device"]["user"]["fname"]
+  _user_room = rpi["device"]["user"]["room"]
+  _user_tel = rpi["device"]["user"]["tel"]
+  _def_usr = rpi["device"]["defuser"]
   print "Done"
 ########################################
 def printDetails():
@@ -212,6 +268,13 @@ def printDetails():
   print "--WIFI--"
   print "ssid         : ", _wifi_ssid
   print "password     : ", _wifi_pw
+
+  print "--ACCOUNTS--"
+  print "admin        : ", _admin
+  print "admin pw     : ", _admin_pw
+  print "user         : ", _user_pw
+  print "user pw      : ", _wifi_pw
+
 ########################################
 
 print "~ Raspberry Pi Setup ~"

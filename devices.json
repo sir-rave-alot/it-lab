@@ -2,7 +2,6 @@
 	"device":{
 		"id":"20",
 		"hostname":"eee-1",
-		"type":"RPI3B",
 		"interfaces":{
 			"wlan0":{
 				"mac":"11",
@@ -18,6 +17,22 @@
 				"ns":"8.8.8.8",
 				"gw":"192.168.1.11"	
 			}
-		}
+		},
+		"admin":{
+			"name":"admin",
+			"pw":"admin-pw",
+			"fname":"teacher",
+			"room":"C333",
+			"tel":"42"
+		},
+		"user":{
+			"name":"stud",
+			"pw":"stud-pw",
+			"fname":"student",
+			"room":"any",
+			"tel":"any"
+		},
+		"type":"RPI3B",
+		"defuser":"pi"
 	}
 }
