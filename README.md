@@ -36,3 +36,46 @@ There is a Python frontend for better usage. Nevertheless this script is just ca
 6. Change the file "variables.sh" for your needs.
 7. Run `source variables.sh` to get the common variables defined
 8. Run `sudo -E ./run` to enter the interactive interface.
+
+## Examlpe Device Descriptor
+Example of the "devices.json" file:
+```
+{
+	"device":{
+		"id":"20",
+		"hostname":"eee-1",
+		"interfaces":{
+			"wlan0":{
+				"mac":"11:aa:11:aa:11:aa:11",
+				"ip":"192.168.2.10",
+				"sn":"24",
+				"ssid":"tapanuli5GHz",
+				"pw":"orangutansarecool2019"	
+			},
+			"eth0":{
+				"mac":"22:bb:22:bb:22:bb:22",
+				"ip":"192.168.1.10",
+				"nm":"24",
+				"ns":"8.8.8.8",
+				"gw":"192.168.1.1"	
+			}
+		},
+		"admin":{
+			"name":"admin",
+			"pw":"bluewhalesarealsocool2019",
+			"fname":"teacher",
+			"room":"skyhigh-14",
+			"tel":"42"
+		},
+		"user":{
+			"name":"stud",
+			"pw":"stud2019",
+			"fname":"student",
+			"room":"everywhere",
+			"tel":"247"
+		},
+		"type":"RPI3B",
+		"defuser":"pi"
+	}
+}
+```
