@@ -272,8 +272,8 @@ def printDetails():
   print "--ACCOUNTS--"
   print "admin        : ", _admin
   print "admin pw     : ", _admin_pw
-  print "user         : ", _user_pw
-  print "user pw      : ", _wifi_pw
+  print "user         : ", _user
+  print "user pw      : ", _user_pw
 
 ########################################
 
