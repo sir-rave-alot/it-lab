@@ -37,7 +37,7 @@ There is a Python frontend for better usage. Nevertheless this script is just ca
 7. Run `source variables.sh` to get the common variables defined
 8. Run `sudo -E ./run` to enter the interactive interface.
 
-## Examlpe Device Descriptor
+### Examlpe Device Descriptor
 Example of the "devices.json" file:
 ```
 {
@@ -79,3 +79,10 @@ Example of the "devices.json" file:
 	}
 }
 ```
+
+## TO DO's
+- Add descriptor for templates (until now it's all done in "replaceConfigs.sh") for automatic processing (nicer userinterface)
+
+- Allow multiple users and admins in device descriptor
+
+- 
