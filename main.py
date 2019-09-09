@@ -26,6 +26,7 @@ _nm_eth =""
 _ns_eth =""
 _gw_eth =""
 
+_wifi_id=""
 _wifi_ssid =""
 _wifi_pw =""
 
@@ -53,7 +54,7 @@ def fillTemplates():
   vReplaceRegex(
     "./output/wpa_supplicant.conf",{
     ("<_THE_SSID>",_wifi_ssid),
-    ("<_THE_HOSTNAME>",_hostname),
+    ("<_THE_HOSTNAME>",_wifi_id),
     ("<_THE_NW_PASSWORD>",_wifi_pw)
     })
   #
@@ -218,6 +219,7 @@ def parse():
   global _gw_eth
   global _wifi_ssid
   global _wifi_pw
+  global _wifi_id
   global _admin
   global _admin_pw
   global _admin_name
@@ -240,6 +242,7 @@ def parse():
   _gw_eth = rpi["device"]["interfaces"]["eth0"]["gw"]
   _wifi_ssid = rpi["device"]["interfaces"]["wlan0"]["ssid"]
   _wifi_pw = rpi["device"]["interfaces"]["wlan0"]["pw"]
+  _wifi_id = rpi["device"]["interfaces"]["wlan0"]["idty"]
   _admin = rpi["device"]["admin"]["name"]
   _admin_pw = rpi["device"]["admin"]["pw"]
   _admin_name = rpi["device"]["admin"]["fname"]
@@ -268,6 +271,7 @@ def printDetails():
   print "--WIFI--"
   print "ssid         : ", _wifi_ssid
   print "password     : ", _wifi_pw
+  print "login-name   : ", _wifi_id
 
   print "--ACCOUNTS--"
   print "admin        : ", _admin
