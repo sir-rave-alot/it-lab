@@ -18,10 +18,13 @@ if [ "$_IP" ]; then
 fi
 
 # SETUP NEW USERS AND DELETE DEFAULT USER
-bash "<_THE_SETUPFILE>" &
-_SETUP_PID=$!
-wait $_SETUP_PID
-# REMOVE SETUP FILE WHEN DONE
-rm "<_THE_SETUPFILE>" &
+if test -f "<_THE_SETUPFILE>"; then
+    bash "<_THE_SETUPFILE>" &
+	_SETUP_PID=$!
+	wait $_SETUP_PID
+	# REMOVE SETUP FILE WHEN DONE
+	rm "<_THE_SETUPFILE>" &
+fi
+
 
 exit 0
