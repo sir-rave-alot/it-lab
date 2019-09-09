@@ -43,6 +43,7 @@ _user_room=""
 _user_tel=""
 
 _def_usr=""
+_def_pw=""
 
 my_env = os.environ.copy()
 my_env["PATH"] = "/usr/sbin:/sbin:" + my_env["PATH"]
@@ -98,6 +99,16 @@ def fillTemplates():
     ("<_THE_DEFAULT_USR>",_def_usr)
     })
   #
+  vReplaceRegex(
+    "./output/install-libs.sh",{
+    ("<_THE_OLD_PW>",_def_pw),
+    ("<_THE_NEW_PW>",_admin_pw),
+    ("<_THE_ADMIN>",_admin),
+    #
+    ("<_THE_DEFAULT_USR>",_def_usr)
+    })
+  #
+
 
 ########################################
 def makeWorkingCopy():
@@ -231,6 +242,7 @@ def parse():
   global _user_room
   global _user_tel
   global _def_usr
+  global _def_pw
 
 
   _id = rpi["device"]["id"]
@@ -254,6 +266,8 @@ def parse():
   _user_room = rpi["device"]["user"]["room"]
   _user_tel = rpi["device"]["user"]["tel"]
   _def_usr = rpi["device"]["defuser"]
+  _def_pw = rpi["device"]["defpw"]
+
   print "Done"
 ########################################
 def printDetails():

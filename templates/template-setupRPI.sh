@@ -44,9 +44,16 @@ chmod 750 /sbin/reboot
 chmod u+s /sbin/shutdown
 chmod u+s /sbin/reboot
 
+# ALLOW R/W GPIO
+adduser <_THE_ADMIN> gpio
+adduser <_THE_USER> gpio
+
+# INSTALL PACKAGES
+apt-get update && sudo apt-get install -y postgresql libpq-dev python-dev
+
 # DELETE DEFAULT USER (PI)
-killall -u ${_OLD_DEF_USR}
-userdel -r ${_OLD_DEF_USR}
+#killall -u ${_OLD_DEF_USR}
+#userdel -r ${_OLD_DEF_USR}
 
 # EXIT
 exit 0

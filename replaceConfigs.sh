@@ -53,4 +53,7 @@ cp ${PRJ_PATH}/${OBJ_DIR}/"rc.local" ${_RFS_MNT_DIR}/"etc"/"rc.local"
 cp ${PRJ_PATH}/${OBJ_DIR}/"welcome.sh" ${_RFS_MNT_DIR}/"etc"/"welcome.sh"
 echo "bash /etc/welcome.sh" >> "${_RFS_MNT_DIR}/etc/skel/.bashrc"
 
+# LIBRARY INSTALLER
+cp ${PRJ_PATH}/${OBJ_DIR}/"install-libs.sh" ${_RFS_MNT_DIR}/"home/pi"/"install-libs.sh"
+
 exit 0

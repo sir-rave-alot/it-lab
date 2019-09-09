@@ -25,7 +25,7 @@ export PRJ_PATH="/home/rave/projects/it-lab"
 
 # IMAGE DIRECTORY AND FILE
 export IMG_DIR="img"
-export IMG_FILE="2018-11-13-raspbian-stretch-lite.img"
+export IMG_FILE="2019-04-08-raspbian-stretch.img"
 
 # DEFINE FILE STRUCTURE
 export TEMPLATE_DIR="templates"
