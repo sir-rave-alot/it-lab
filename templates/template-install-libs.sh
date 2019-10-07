@@ -21,5 +21,8 @@ yes | bash firmware_update.sh
 # CLEAN
 rm -rf ${_THE_OUT_FILE}
 
+# START "PIGPIO" DEAMON
+sudo pigpiod
+
 # CHANGE PASSWORD
 echo -e "<_THE_OLD_PW>\n<_THE_NEW_PW>\n<_THE_NEW_PW>" | passwd
